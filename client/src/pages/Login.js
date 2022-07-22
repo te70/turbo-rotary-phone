@@ -75,7 +75,7 @@ const LOGIN_USER = gql`
         $password: String!
     ) {
         login(
-            username: $username password: $password
+            username: $username, password: $password
         ){
             id email username createdAt token
         }

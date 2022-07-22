@@ -31,7 +31,7 @@ function SinglePost(props) {
             postId, 
             body: comment
         }
-    })
+    });
 
     function deletePostCallback(){
         props.history.push('/')
@@ -61,7 +61,7 @@ function SinglePost(props) {
                                 <Card.Description>{body}</Card.Description>
                             </Card.Content>
                             <hr/>
-                            <Card.Content>
+                            <Card.Content extra>
                                 <LikeButton user={user} post={{id, likeCount, likes}}/>
                                 <MyPopup
                                     content="Comment on post">
@@ -93,7 +93,7 @@ function SinglePost(props) {
                                             placeholder='Comment...'
                                             name='comment'
                                             value={comment}
-                                            onChange={event => setComment(event.target.value)}
+                                            onChange={(event) => setComment(event.target.value)}
                                             ref={commentInputRef}
                                         />
                                         <button type="submit" className='ui button teal' disabled={comment.trim() === ''} onClick={submitComment}>Submit</button>
@@ -124,7 +124,7 @@ function SinglePost(props) {
 }
 
 const SUBMIT_COMMENT_MUTATION = gql`
-    mutation(postId: String!, body: String!){
+    mutation($postId: String!, $body: String!){
         createComment(postId: $postId, body: $body){
             id
             comments{
@@ -154,6 +154,6 @@ const FETCH_POST_QUERY = gql`
             }
         }
     }
-`
+`;
 
-export default SinglePost
+export default SinglePost;

@@ -46,7 +46,7 @@ function AuthProvider(props){
         dispatch({
             type: 'LOGIN',
             payload: userData
-        })
+        });
     }
 
     function logout(){
@@ -59,7 +59,7 @@ function AuthProvider(props){
             value={{ user: state.user, login, logout }}
             {...props}
         />
-    )
+    );
 }
 
 export { AuthContext, AuthProvider }
